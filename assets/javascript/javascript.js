@@ -16,30 +16,41 @@ var guessesSoFarText = document.getElementById("guessesSoFar-text");
 
 //This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
-
   //Determines which key is pressed.
   var userGuess = event.key;
 
-  
   //Randomly chooses a number from the options array.  This is the computer's guess.
-  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  var computerGuess =
+    computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-  if ((userGuess === "1") || (userGuess === "2") || (userGuess === "3") || (userGuess === "4") || (userGuess === "5") || (userGuess === "6") || (userGuess === "7") || (userGuess === "8") || (userGuess === "9")) {
+  if (
+    userGuess === "1" ||
+    userGuess === "2" ||
+    userGuess === "3" ||
+    userGuess === "4" ||
+    userGuess === "5" ||
+    userGuess === "6" ||
+    userGuess === "7" ||
+    userGuess === "8" ||
+    userGuess === "9"
+  ) {
+    // Console log something, just to see if you're actually reaching this point
+    console.log("made it this far");
+    console.log("computerGuess: ", computerGuess);
+    console.log("userGuess", userGuess);
 
     if (userGuess === computerGuess) {
-      wins++
+      wins++;
+    } else {
+      losses++;
     }
-    else {
-      losses++
-    }
+
+    // !! LINK YOUR JAVASCRIPT AT THE BOTTOM OF YOUR HTML,
+    // javascript is synchronous, so if it needs to access something, it needs to let that load first. (line 25 in the html)
 
     winsText.textContent = "Wins: " + wins;
     lossesText.textContent = "Losses: " + losses;
-    guessesLeftText.textContent = "Guess Left: " + (--guessesLeft);
+    guessesLeftText.textContent = "Guess Left: " + guessesLeft;
     guessesSoFarText.textContent = "Your Guesses So Far: " + userGuess;
-
   }
-
 };
-
-
