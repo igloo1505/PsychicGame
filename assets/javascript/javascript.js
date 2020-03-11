@@ -6,15 +6,41 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessesSoFar;
-var userGuessSpan = document.getElementById("userGuess");
-var computerGuessSpan = document.getElementById("computerGuess");
-var winsSpan = document.getElementById("wins");
-var lossesSpan = document.getElementById("losses");
-var guessesLeftSpan = document.getElementById("guessesLeft");
-var guessesSoFarSpan = document.getElementById("guessesSoFar");
 
-//Determines which key is pressed and ignores invalid entries.
-var userGuess = event.key;
-  if (userChoices.indexOf(userGuess) === -1) {
-      return 
+var directionsText = document.getElementById("directions-text");
+var userGuessText = document.getElementById("userGuess-text");
+var computerGuessText = document.getElementById("computerGuess-text");
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+var guessesLeftText = document.getElementById("guessesLeft-text");
+var guessesSoFarText = document.getElementById("guessesSoFar-text");
+
+//This function is run whenever the user presses a key.
+document.onkeyup = function(event) {
+
+  //Determines which key is pressed.
+  var userGuess = event.key;
+
+  
+  //Randomly chooses a number from the options array.  This is the computer's guess.
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+  if ((userGuess === "1") || (userGuess === "2") || (userGuess === "3") || (userGuess === "4") || (userGuess === "5") || (userGuess === "6") || (userGuess === "7") || (userGuess === "8") || (userGuess === "9")) {
+
+    if (userGuess === computerGuess) {
+      wins++
+    }
+    else {
+      losses++
+    }
+
+    winsText.textContent = "Wins: " + wins;
+    lossesText.textContent = "Losses: " + losses;
+    guessesLeftText.textContent = "Guess Left: " + (--guessesLeft);
+    guessesSoFarText.textContent = "Your Guesses So Far: " + userGuess;
+
   }
+
+};
+
+
