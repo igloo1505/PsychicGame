@@ -1,6 +1,5 @@
 //Create arrays that list out all the options (numbers 1-9)
 var computerChoices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var userChoices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 //Declare remaining variables
 var wins = 0;
 var losses = 0;
